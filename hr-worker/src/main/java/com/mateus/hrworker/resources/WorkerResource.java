@@ -19,10 +19,6 @@ import com.mateus.hrworker.repositories.WorkerRepository;
 @RequestMapping(value = "/workers")
 public class WorkerResource {
 	
-	private static Logger log = LoggerFactory.getLogger(WorkerResource.class);
-	
-	@Autowired
-	private Environment env;
 
 	@Autowired
 	private WorkerRepository repository;
@@ -35,9 +31,6 @@ public class WorkerResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Worker> findById(@PathVariable Long id){
-		
-		log.info("PORT = "+ env.getProperty("local.server.port"));
-		
 		Worker obj = repository.findById(id).get();
 		return ResponseEntity.ok(obj);
 	}
