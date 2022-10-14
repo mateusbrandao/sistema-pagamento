@@ -21,7 +21,7 @@ public class UserResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<User> findById(@PathVariable Long id){
 
-		User obj = repository.getReferenceById(id);
+		User obj = repository.findById(id).get();
 		return ResponseEntity.ok(obj);
 		
 	}
